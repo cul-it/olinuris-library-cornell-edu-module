@@ -1,0 +1,8 @@
+name = SimpleSAML Authentication for CUL
+description = Preconfigured authentication for CUL websites using SimpleSAML.
+core = 7.x
+package = Cornell University Library Features
+version = 7.x-1.0-rc4
+project = simplesaml_authentication_for_cul
+dependencies[] = ctools
+dependencies[] = fe_block
