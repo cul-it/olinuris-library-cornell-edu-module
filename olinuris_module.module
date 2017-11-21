@@ -1,1 +1,27 @@
 <?php
+
+/**
+ * Implements hook_views_api().
+ */
+ function olinuris_module_views_api() {
+    return array(
+        'api' => 3,
+        'path' => drupal_get_path('module', 'olinuris_module') . '/views',
+    )
+ }
+
+/**
+ * Implements hook_views_handlers().
+ */
+function olinuris_module_views_handlers() {
+    return array(
+        'info' => array(
+            'path' => drupal_get_path('module', 'olinuris_module') . '/views',
+        ),
+        'handlers' => array(
+            'views_handler_field_olinuris_field' => array(
+                'parent' => 'views_handler_field_numeric',
+            ),
+        ),
+    );
+}
