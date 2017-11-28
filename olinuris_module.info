@@ -3,5 +3,3 @@ description = Computed fields and views PHP code for olinuris.library.cornell.ed
 core = 7.x
 package = Cornell University Library
 dependencies[] = computed_field
-
-files[] = /views/views_handler_field_olinuris_field.inc
