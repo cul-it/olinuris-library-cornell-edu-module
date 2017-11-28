@@ -1,45 +1,23 @@
 <?php
 
 /**
- * Implements hook_views_api().
- */
- function olinuris_module_views_api() {
-    return array(
-        'api' => 3,
-        'path' => drupal_get_path('module', 'olinuris_module') . '/views',
-    );
- }
-
-/**
- * Implements hook_views_handlers().
- */
-function olinuris_module_views_handlers() {
-    dsm('olinuris_module_views_handlers');
-    return array(
-        'info' => array(
-            'path' => drupal_get_path('module', 'olinuris_module') . '/views',
-        ),
-        'handlers' => array(
-            'views_handler_field_olinuris_field' => array(
-                'parent' => 'views_handler_field_numeric',
-            ),
-        ),
-    );
-}
-
-/**
  * Implements Available / Due Back in the
  * Equipment Pick Up view
  */
 function computed_field_field_equipment_available_displa_compute(&$entity_field, $entity_type, $entity, $field, $instance, $langcode, $items) {
     drupal_set_message('computed_field_field_equipment_available_displa_compute');
-    $entity_field[0]['value'] = "computed_field_field_equipment_available_displa_compute";
+    $node_w = entity_metadata_wrapper($entity_type, $entity->nid);
+    $due = $node_w->field_equipment_due_date->value();
+    if ($due == 0) {
+        // available
+    }
+    else {
+        // due back
+        $due_back = format_date($due, )
+    }
+    $output = 'out: ' . print_r($due,true);
+    $entity_field[0]['value'] = $output;
 }
-// function computed_field_field_equipment_available_displa_display($field, $entity_field_item, $entity_lang, $langcode, $entity) {
-//     drupal_set_message('computed_field_field_equipment_available_displa_display');
-//     return $entity_field_item['value'];
-// }
-
 
 /**
  * Implements 'Pick up reserve Buttons' in the
