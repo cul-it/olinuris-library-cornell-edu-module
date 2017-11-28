@@ -26,3 +26,42 @@ function olinuris_module_views_handlers() {
         ),
     );
 }
+
+/**
+ * Implements Available / Due Back in the
+ * Equipment Pick Up view
+ */
+function computed_field_field_equipment_available_displa_compute(&$entity_field, $entity_type, $entity, $field, $instance, $langcode, $items) {
+    drupal_set_message('computed_field_field_equipment_available_displa_compute');
+    $entity_field[0]['value'] = "computed_field_field_equipment_available_displa_compute";
+}
+// function computed_field_field_equipment_available_displa_display($field, $entity_field_item, $entity_lang, $langcode, $entity) {
+//     drupal_set_message('computed_field_field_equipment_available_displa_display');
+//     return $entity_field_item['value'];
+// }
+
+
+/**
+ * Implements 'Pick up reserve Buttons' in the
+ * Equipment Reservation Category taxonomy
+ */
+function computed_field_field_pick_up_reserve_buttons_compute(&$entity_field, $entity_type, $entity, $field, $instance, $langcode, $items) {
+    drupal_set_message('computed_field_field_pick_up_reserve_buttons_compute ');
+    // look up the reservation id & term name
+    $term_w = entity_metadata_wrapper($entity_type, $entity);
+    $tid = $term_w->tid->value();
+    $reservation_id = $term_w->field_reservation_id->value();
+    $name = $term_w->name->value();
+    $output = "tid: $tid, reservation: $reservation_id, name: $name";
+    dsm($output);
+    $parts[] = t('<div class="equipment-category">@name</div>',
+        array('@name' => $name));
+    $parts[] = '<div class="equipment-buttons">';
+    
+    $parts[] = '</div>';
+    $display_output = 'computed_field_field_pick_up_reserve_buttons_compute';
+}
+function computed_field_field_pick_up_reserve_buttons_display($field, $entity_field_item, $entity_lang, $langcode, $entity) {
+    drupal_set_message('computed_field_field_pick_up_reserve_buttons_display ');
+    return 'computed_field_field_pick_up_reserve_buttons_display';
+}
