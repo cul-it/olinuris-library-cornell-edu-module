@@ -20,6 +20,7 @@ class views_handler_field_olinuris_field extends views_handler_field_numeric {
         // it entirely.
         parent::($form, $form_state);
         // Now we can add our new option using normal FAPI elements.
+        dsm('options_form olinuris');
         $form['olinuris_button_selector'] = array(
           '#type' => 'select',
           '#title' => t('Equipment buttons'),
@@ -44,6 +45,7 @@ class views_handler_field_olinuris_field extends views_handler_field_numeric {
         // before attempting to render anything. As Views assigns an alias
         // to every field and uses that alias to key the results you must
         // use that value to locate your data on the $values obj. Thus...
+        dsm('render olinuris');
         if (!empty($values->{$this->field_alias})) {
             // You can then either just return the desired output..
             return "My Value:" . $values->{$this->field_alias}
