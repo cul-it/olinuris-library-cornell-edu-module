@@ -5,17 +5,17 @@
  * Equipment Pick Up view
  */
 function computed_field_field_equipment_available_displa_compute(&$entity_field, $entity_type, $entity, $field, $instance, $langcode, $items) {
-    drupal_set_message('computed_field_field_equipment_available_displa_compute');
     $node_w = entity_metadata_wrapper($entity_type, $entity->nid);
     $due = $node_w->field_equipment_due_date->value();
     if ($due == 0) {
         // available
+        $output = t('<span class="label label-success">Available</span>');
     }
     else {
         // due back
-        $due_back = format_date($due, )
+        $output = t('<span class="label label-danger">Checked out</span><br />Due Back @due',
+            array('@due' => format_date($due, 'day_time')));
     }
-    $output = 'out: ' . print_r($due,true);
     $entity_field[0]['value'] = $output;
 }
 
