@@ -1,0 +1,5 @@
+name = Olinuris Module
+description = Computed fields and views PHP code for olinuris.library.cornell.edu.
+core = 7.x
+package = Cornell University Library
+dependencies[] = computed_field
